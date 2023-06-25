@@ -1,6 +1,8 @@
 /* style.css */
 
 body {
+    color: #00FF00;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: black;
 }
 
