@@ -13,7 +13,6 @@
     </div>
     <div class="main">
         <div class="scores">
-            <div class="scores-text" id="scoreText">Choose wisely...</div>
             <div class="scores-display">
                 <div class="chosen-display">
                     <div class="chosen" id="usrChosen"></div>
@@ -25,6 +24,8 @@
                 </div>
             </div>
         </div>
+
+<!--
         <div class="buttons">
             <button class="button" id="rock">
                 <img src="./images/rock.png" alt="rock" class="img" id="rock-img">
@@ -35,10 +36,15 @@
             <button class="button" id="scissors">
                 <img src="./images/scissors.png" alt="scissors" class="img" id="scissors-img">
             </button>
-        </div>
+        </div> 
+-->
+
         <div class = "input">
             <form>
-                Choose wisely: <input type="text" name="usrInput" id="usrInput">
+                Choose wisely: 
+                <input type="radio" name="usrInput" id="rockIn" value = "Rock">
+                <input type="radio" name="usrInput" id="paperIn" value = "Paper">
+                <input type="radio" name="usrInput" id="scissorsIn" value = "Rock">
             </form>
         </div>
         <div class="retry" id = "retry">
