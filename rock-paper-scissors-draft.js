@@ -24,26 +24,6 @@ function getComputerChoice() {
     return rps[Math.floor(Math.random() * 3)]
 }
 
-// Play a round
-function playRound(player, comp) {
-
-    // Configure messages
-    let result = `You: ${player}, Computer: ${comp.data}`,
-    tie = "Tie!",
-    win = `You win! ${player} beats ${comp.data}.`,
-    lose = `You lose! ${comp.data} beats ${player}.`,
-    tryAgain = "Reload the page to try again."
-
-    // Judge using nodes, output messages
-    if (player == comp.next.data) {
-        alert(result + "\n" + win + "\n" + tryAgain)
-    } else if (comp.data == player) {
-        alert(result + "\n" + tie + "\n" + tryAgain)
-    } else {
-        alert(result + "\n" + lose + "\n" + tryAgain)
-    }
-}
-
 // Capitalize
 function capitalize(str) {
     let strCap = str.charAt(0).toUpperCase() + str.slice(1)
@@ -63,6 +43,28 @@ let player = checkInput(capitalize(prompt("Rock, Paper, Scissors?")))
 
 // Get computer input
 let comp = getComputerChoice()
+
+// Play a round
+function playRound(player, comp) {
+
+    // Configure messages
+    let result = `You: ${player}, Computer: ${comp.data}`,
+    tie = "Tie!",
+    win = `You win! ${player} beats ${comp.data}.`,
+    lose = `You lose! ${comp.data} beats ${player}.`,
+    tryAgain = "Reload the page to try again."
+
+    // Judge using nodes, output messages
+    if (player == comp.next.data) {
+        alert(result + "\n" + win + "\n" + tryAgain)
+        playerScore++
+    } else if (comp.data == player) {
+        alert(result + "\n" + tie + "\n" + tryAgain)
+    } else {
+        alert(result + "\n" + lose + "\n" + tryAgain)
+        compScore++
+    }
+}
 
 //Initialize
 playRound(player, comp)

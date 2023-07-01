@@ -13,15 +13,15 @@
     </div>
     <div class="main">
         <div class="scores">
-            <div class="scores-text">Choose wisely...</div>
+            <div class="scores-text" id="scoreText">Choose wisely...</div>
             <div class="scores-display">
                 <div class="chosen-display">
-                    <div class="chosen" id="player-chosen"></div>
-                    <div class="score" id="player-score">Player: 0</div>
+                    <div class="chosen" id="usrChosen"></div>
+                    <div class="score" id="usrScore">Player: 0</div>
                 </div>
                 <div class="chosen-display">
-                    <div class="chosen" id="comp-chosen"></div>
-                    <div class="score" id="comp-score">Computer: 0</div>
+                    <div class="chosen" id="cmpChosen"></div>
+                    <div class="score" id="cmpScore">Computer: 0</div>
                 </div>
             </div>
         </div>
@@ -36,7 +36,12 @@
                 <img src="./images/scissors.png" alt="scissors" class="img" id="scissors-img">
             </button>
         </div>
-        <div class="retry">
+        <div class = "input">
+            <form>
+                Choose wisely: <input type="text" name="usrInput" id="usrInput">
+            </form>
+        </div>
+        <div class="retry" id = "retry">
             <button class="retry-button">Play again?</button>
         </div>
     </div>
