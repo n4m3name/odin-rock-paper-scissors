@@ -24,27 +24,12 @@ function getComputerChoice() {
     return rps[Math.floor(Math.random() * 3)]
 }
 
-// Play a round
-function playRound(player, comp) {
-
-    // Configure messages
-    let result = `You: ${player}, Computer: ${comp.data}`,
-    tie = "Tie!",
-    win = `You win! ${player} beats ${comp.data}.`,
-    lose = `You lose! ${comp.data} beats ${player}.`,
-    tryAgain = "Reload the page to try again."
-
-    // Judge using nodes, output messages
-    if (player == comp.next.data) {
-        alert(result + "\n" + win + "\n" + tryAgain)
-    } else if (comp.data == player) {
-        alert(result + "\n" + tie + "\n" + tryAgain)
-    } else {
-        alert(result + "\n" + lose + "\n" + tryAgain)
-    }
+//Return player's choice by input
+function getPlayerChoice() {
+    return checkInput(capitalize(prompt("Rock, Paper, Scissors?")))
 }
 
-// Capitalize
+// Capitalize player input
 function capitalize(str) {
     let strCap = str.charAt(0).toUpperCase() + str.slice(1)
     return strCap
@@ -58,11 +43,65 @@ function checkInput(player) {
     return checkInput(capitalize(prompt("Try again...")))
 }
 
-// Get user input
-let player = checkInput(capitalize(prompt("Rock, Paper, Scissors?")))
+// Return round winner
+function playRound(player, comp) {
 
-// Get computer input
-let comp = getComputerChoice()
+    // Judge using nodes, return winner
+    if (player == comp.next.data) {
+        return "player"
+    } else if (comp.data == player) {
+        return "tie"
+    } else {
+        return "comp"
+    }
+}
 
-//Initialize
-playRound(player, comp)
+//Play 5 rounds
+function game() {
+
+    // Set scores to 0
+    let plr = 0,
+    cmp = 0
+    
+    // Configure independent messages
+    let tie = "Tie!",
+    winAll = "You win!",
+    loseAll = "You lose!",
+    tryAgain = "Reload the page to try again."
+
+    //Loop rounds
+    for (let i = 0; i < 5; i++) {
+
+        // Get user, computer input
+        let player = getPlayerChoice(),
+        comp = getComputerChoice()
+
+        // Configure dependent messages
+        let result = `You chose ${player}, computer chose ${comp.data}`,
+        win = `${player} beats ${comp.data}.`,
+        lose = `${comp.data} beats ${player}.`
+
+        winner = playRound(player, comp);
+        if (winner == "player") {
+            plr += 1
+            alert(`Score: You: ${plr}, Computer: ${cmp}` + "\n" + result + "\n" + win)
+        } else if (winner == "tie") {
+            alert(`Score: You: ${plr}, Computer: ${cmp}` + "\n" + result + "\n" + tie)
+        } else {
+            cmp += 1
+            alert(`Score: You: ${plr}, Computer: ${cmp}` + "\n" + result + "\n" + lose)
+        }
+    }
+
+    //Final display
+    if (plr > cmp) {
+        alert(`Final score: ${plr}, ${cmp}` + "\n" + winAll + "\n" + tryAgain)
+    } else if( plr == cmp) {
+        alert(`Final score: ${plr}, ${cmp}` + "\n" + tie + "\n" + tryAgain)
+    } else {
+        alert(`Final score: ${plr}, ${cmp}` + "\n" + loseAll + "\n" + tryAgain)
+    }
+}
+
+//Initialize game
+game()
